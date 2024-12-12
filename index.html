@@ -1,25 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Dynamic Personal Webpage</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="photo">
-            <img src="assets/your-photo.jpg" alt="Your Photo">
-        </div>
-        <h1>Yiğithan Gediz</h1>
-        <p class="description">
-            Welcome to my personal website! I am passionate about computational physics, data visualization, and scientific research. Check out my projects below.
-        </p>
-        <div class="links">
-            <a href="https://yigithangediz.github.io/project1" target="_blank">Project 1</a>
-            <a href="https://yigithangediz.github.io/project2" target="_blank">Project 2</a>
-            <a href="https://yigithangediz.github.io/project3" target="_blank">Project 3</a>
-        </div>
+
+  <!-- SECTION 1: Welcome Section -->
+  <section id="section1">
+    <div class="content">
+      <h1>Welcome to My World</h1>
+      <p>Scroll down to explore</p>
     </div>
+    <div class="scroll-hint">Scroll Down ↓</div>
+  </section>
+
+  <!-- New Section: Animated GIFs -->
+  <section id="gifSection">
+    <div class="gif-container">
+      <img src="gif1.gif" alt="Animation 1" class="gif-item">
+      <img src="gif2.gif" alt="Animation 2" class="gif-item">
+      <img src="gif3.gif" alt="Animation 3" class="gif-item">
+    </div>
+  </section>
+
+  <!-- SECTION 2: Introduction and Welcome Text -->
+  <section id="section2">
+    <h2>Hello!</h2>
+    <p>I'm [Your Name], a [Your Profession/Role]. I love building cool and interactive web experiences. On this page, you’ll find some of my latest projects, ideas, and experiments. I hope you enjoy scrolling through, and don’t hesitate to reach out!</p>
+  </section>
+
+  <!-- SECTION 4: Projects Section -->
+  <section id="section4">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <div class="project-item" data-article-id="project-one-article">
+        <h4>Project One</h4>
+        <p>A brief description of your first amazing project.</p>
+      </div>
+      <div class="project-item" data-article-id="project-two-article">
+        <h4>Project Two</h4>
+        <p>Another fascinating project that highlights your skills and creativity.</p>
+      </div>
+      <div class="project-item" data-article-id="project-three-article">
+        <h4>Project Three</h4>
+        <p>A cutting-edge concept or prototype showcasing forward-thinking solutions.</p>
+      </div>
+      <div class="project-item" data-article-id="project-four-article">
+        <h4>Project Four</h4>
+        <p>A sleek and functional design that impresses visitors.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hidden Articles -->
+  <section id="articles">
+    <article id="project-one-article" class="article-content">
+      <h2>Project One: Detailed Article</h2>
+      <p>This is where you’d write a detailed description, similar to a Medium article. Include inspiration, technologies, challenges, and results.</p>
+    </article>
+
+    <article id="project-two-article" class="article-content">
+      <h2>Project Two: In-Depth Overview</h2>
+      <p>Discuss the motivation, design process, and what you learned while building Project Two.</p>
+    </article>
+
+    <article id="project-three-article" class="article-content">
+      <h2>Project Three: Behind the Scenes</h2>
+      <p>Explain the innovative technologies or frameworks, scalability considerations, and performance optimizations.</p>
+    </article>
+
+    <article id="project-four-article" class="article-content">
+      <h2>Project Four: Story and Impact</h2>
+      <p>Detail the story behind this project, its problem-solving angle, user adoption, and future plans.</p>
+    </article>
+  </section>
+
+  <!-- Modal Overlay for Article Reading -->
+  <div id="articleModal" class="modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeArticle()">Close</button>
+      <div id="articleContainer"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
