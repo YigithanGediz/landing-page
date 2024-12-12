@@ -1,91 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Dynamic Personal Webpage</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Interactive Dynamic Personal Page</title>
+<style>
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    position: relative;
+    background: url("epic_img.jpg") center center/cover no-repeat fixed;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .top-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    gap: 2em;
+  }
+
+  .top-section img {
+    width: 300px;
+    height: auto;
+    border: 2px solid white;
+    border-radius: 0.5em;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #ffffff;
+  }
+
+  .hero-text-container {
+    position: relative;
+    min-height: 5em;
+    overflow: hidden;
+  }
+
+  #hero-text {
+    position: relative;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+    font-size: 4em;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  .container {
+    overflow: hidden;
+    padding: 20px;
+    margin-top: 10em;
+  }
+
+  .visuallyhidden {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    opacity: 0;
+  }
+
+  .card-carousel {
+    --card-width: 80%;
+    --card-max-width: 280px;
+    --card-height: 350px;
+    --carousel-min-width: 600px;
+    z-index: 1;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: var(--card-height);
+    min-width: var(--carousel-min-width);
+    transition: filter .3s ease;
+  }
+
+  @media screen and (max-width: 640px) {
+    .card-carousel {
+      margin-left: calc((100vw - var(--carousel-min-width) - 40px) / 2)
+    }
+  }
+
+  .card-carousel.smooth-return {
+    transition: all .2s ease;
+  }
+
+  .card-carousel .card {
+    background: whitesmoke;
+    width: var(--card-width);
+    max-width: var(--card-max-width);
+    text-align: center;
+    padding: 1em;
+    min-width: 250px;
+    height: var(--card-height);
+    position: absolute;
+    margin: 0 auto;
+    color: rgba(0,0,0,.5);
+    transition: inherit;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+    border-radius: 1em;
+    filter: brightness(.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .card.highlight {
+    filter: brightness(1)
+  }
+
+  .card-title {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: black;
+  }
+
+  .card:hover {
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
+  <div class="top-section">
+    <img src="gif1.gif" alt="Simulation GIF 1">
+    <img src="gif2.gif" alt="Simulation GIF 2">
+  </div>
 
-  <!-- SECTION 1: Welcome Section -->
-  <section id="section1">
-    <div class="content">
-      <h1>Welcome to My World</h1>
-      <p>Scroll down to explore</p>
-    </div>
-    <div class="scroll-hint">Scroll Down ↓</div>
-  </section>
-
-  <!-- New Section: Animated GIFs -->
-  <section id="gifSection">
-    <div class="gif-container">
-      <img src="gif1.gif" alt="Animation 1" class="gif-item">
-      <img src="gif2.gif" alt="Animation 2" class="gif-item">
-      <img src="gif3.gif" alt="Animation 3" class="gif-item">
-    </div>
-  </section>
-
-  <!-- SECTION 2: Introduction and Welcome Text -->
-  <section id="section2">
-    <h2>Hello!</h2>
-    <p>I'm [Your Name], a [Your Profession/Role]. I love building cool and interactive web experiences. On this page, you’ll find some of my latest projects, ideas, and experiments. I hope you enjoy scrolling through, and don’t hesitate to reach out!</p>
-  </section>
-
-  <!-- SECTION 4: Projects Section -->
-  <section id="section4">
-    <h2>My Projects</h2>
-    <div class="projects-grid">
-      <div class="project-item" data-article-id="project-one-article">
-        <h4>Project One</h4>
-        <p>A brief description of your first amazing project.</p>
-      </div>
-      <div class="project-item" data-article-id="project-two-article">
-        <h4>Project Two</h4>
-        <p>Another fascinating project that highlights your skills and creativity.</p>
-      </div>
-      <div class="project-item" data-article-id="project-three-article">
-        <h4>Project Three</h4>
-        <p>A cutting-edge concept or prototype showcasing forward-thinking solutions.</p>
-      </div>
-      <div class="project-item" data-article-id="project-four-article">
-        <h4>Project Four</h4>
-        <p>A sleek and functional design that impresses visitors.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Hidden Articles -->
-  <section id="articles">
-    <article id="project-one-article" class="article-content">
-      <h2>Project One: Detailed Article</h2>
-      <p>This is where you’d write a detailed description, similar to a Medium article. Include inspiration, technologies, challenges, and results.</p>
-    </article>
-
-    <article id="project-two-article" class="article-content">
-      <h2>Project Two: In-Depth Overview</h2>
-      <p>Discuss the motivation, design process, and what you learned while building Project Two.</p>
-    </article>
-
-    <article id="project-three-article" class="article-content">
-      <h2>Project Three: Behind the Scenes</h2>
-      <p>Explain the innovative technologies or frameworks, scalability considerations, and performance optimizations.</p>
-    </article>
-
-    <article id="project-four-article" class="article-content">
-      <h2>Project Four: Story and Impact</h2>
-      <p>Detail the story behind this project, its problem-solving angle, user adoption, and future plans.</p>
-    </article>
-  </section>
-
-  <!-- Modal Overlay for Article Reading -->
-  <div id="articleModal" class="modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeArticle()">Close</button>
-      <div id="articleContainer"></div>
+  <div class="hero">
+    <div class="hero-text-container">
+      <h2 id="hero-text"></h2>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <div class="container">
+    <div class="card-carousel">
+      <a class="card" id="1" href="https://example.com/project1" target="_blank">
+        <h3 class="card-title">Project 1</h3>
+        <p>1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+      </a>
+      <a class="card" id="2" href="https://example.com/project2" target="_blank">
+        <h3 class="card-title">Project 2</h3>
+        <p>2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+      </a>
+      <a class="card" id="3" href="https://example.com/project3" target="_blank">
+        <h3 class="card-title">Project 3</h3>
+        <p>3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+      </a>  
+      <a class="card" id="4" href="https://example.com/project4" target="_blank">
+        <h3 class="card-title">Project 4</h3>
+        <p>4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+      </a>
+      <a class="card" id="5" href="https://example.com/project5" target="_blank">
+        <h3 class="card-title">Project 5</h3>
+        <p>5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+      </a>
+    </div>
+    <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
+  </div>
+
+<script>
+const heroText = document.getElementById('hero-text');
+const heroPhrases = [
+"I'm Yiğithan Gediz, a passionately curious physicist",
+"2D materials, quantum optimization, and active matter.",
+"Connecting physics to data science and explainable AI",
+"Mozart enthusiast, basketball lover, and avid traveler"];
+
+heroText.textContent = heroPhrases[0];
+let currentIndex = 0;
+
+function showNextPhrase() {
+  heroText.style.opacity = 0;
+  setTimeout(() => {
+    currentIndex = (currentIndex + 1) % heroPhrases.length;
+    heroText.textContent = heroPhrases[currentIndex];
+    heroText.style.opacity = 1;
+  }, 2000);
+}
+
+setInterval(showNextPhrase, 6000);
+
+const cardsContainer = document.querySelector(".card-carousel");
+const cardsController = document.querySelector(".card-carousel + .card-controller")
+
+class DraggingEvent {
+  constructor(target = undefined) {
+    this.target = target;
+  }
+  
+  event(callback) {
+    let handler;
+    this.target.addEventListener("mousedown", e => {
+      e.preventDefault()
+      handler = callback(e)
+      window.addEventListener("mousemove", handler)
+      document.addEventListener("mouseleave", clearDraggingEvent)
+      window.addEventListener("mouseup", clearDraggingEvent)
+      function clearDraggingEvent() {
+        window.removeEventListener("mousemove", handler)
+        window.removeEventListener("mouseup", clearDraggingEvent)
+        document.removeEventListener("mouseleave", clearDraggingEvent)
+        handler(null)
+      }
+    })
+    
+    this.target.addEventListener("touchstart", e => {
+      handler = callback(e)
+      window.addEventListener("touchmove", handler)
+      window.addEventListener("touchend", clearDraggingEvent)
+      document.body.addEventListener("mouseleave", clearDraggingEvent)
+      function clearDraggingEvent() {
+        window.removeEventListener("touchmove", handler)
+        window.removeEventListener("touchend", clearDraggingEvent)
+        handler(null)
+      }
+    })
+  }
+  
+  getDistance(callback) {
+    function distanceInit(e1) {
+      let startingX, startingY;
+      if ("touches" in e1) {
+        startingX = e1.touches[0].clientX
+        startingY = e1.touches[0].clientY
+      } else {
+        startingX = e1.clientX
+        startingY = e1.clientY
+      }
+      return function(e2) {
+        if (e2 === null) {
+          return callback(null)
+        } else {
+          if ("touches" in e2) {
+            return callback({
+              x: e2.touches[0].clientX - startingX,
+              y: e2.touches[0].clientY - startingY
+            })
+          } else {
+            return callback({
+              x: e2.clientX - startingX,
+              y: e2.clientY - startingY
+            })
+          }
+        }
+      }
+    }
+    this.event(distanceInit)
+  }
+}
+
+class CardCarousel extends DraggingEvent {
+  constructor(container, controller = undefined) {
+    super(container)
+    this.container = container
+    this.controllerElement = controller
+    this.cards = container.querySelectorAll(".card")
+    this.centerIndex = (this.cards.length - 1) / 2;
+    this.cardWidth = this.cards[0].offsetWidth / this.container.offsetWidth * 100
+    this.xScale = {};
+    window.addEventListener("resize", this.updateCardWidth.bind(this))
+    if (this.controllerElement) {
+      this.controllerElement.addEventListener("keydown", this.controller.bind(this))      
+    }
+    this.build()
+    super.getDistance(this.moveCards.bind(this))
+  }
+  
+  updateCardWidth() {
+    this.cardWidth = this.cards[0].offsetWidth / this.container.offsetWidth * 100
+    this.build()
+  }
+  
+  build(fix = 0) {
+    for (let i = 0; i < this.cards.length; i++) {
+      const x = i - this.centerIndex;
+      const scale = this.calcScale(x)
+      const scale2 = this.calcScale2(x)
+      const zIndex = -(Math.abs(i - this.centerIndex))
+      const leftPos = this.calcPos(x, scale2)
+      this.xScale[x] = this.cards[i]
+      this.updateCards(this.cards[i], {
+        x: x,
+        scale: scale,
+        leftPos: leftPos,
+        zIndex: zIndex
+      })
+    }
+  }
+  
+  controller(e) {
+    const temp = {...this.xScale};
+    if (e.keyCode === 39) {
+      for (let x in this.xScale) {
+        const newX = (parseInt(x) - 1 < -this.centerIndex) ? this.centerIndex : parseInt(x) - 1;
+        temp[newX] = this.xScale[x]
+      }
+    }
+    if (e.keyCode == 37) {
+      for (let x in this.xScale) {
+        const newX = (parseInt(x) + 1 > this.centerIndex) ? -this.centerIndex : parseInt(x) + 1;
+        temp[newX] = this.xScale[x]
+      }
+    }
+    this.xScale = temp;
+    for (let x in temp) {
+      const scale = this.calcScale(x),
+            scale2 = this.calcScale2(x),
+            leftPos = this.calcPos(x, scale2),
+            zIndex = -Math.abs(x)
+      this.updateCards(this.xScale[x], {
+        x: x,
+        scale: scale,
+        leftPos: leftPos,
+        zIndex: zIndex
+      })
+    }
+  }
+  
+  calcPos(x, scale) {
+    let formula;
+    if (x < 0) {
+      formula = (scale * 100 - this.cardWidth) / 2
+      return formula
+    } else if (x > 0) {
+      formula = 100 - (scale * 100 + this.cardWidth) / 2
+      return formula
+    } else {
+      formula = 100 - (scale * 100 + this.cardWidth) / 2
+      return formula
+    }
+  }
+  
+  updateCards(card, data) {
+    if (data.x || data.x == 0) {
+      card.setAttribute("data-x", data.x)
+    }
+    if (data.scale || data.scale == 0) {
+      card.style.transform = `scale(${data.scale})`
+      card.style.opacity = (data.scale === 0) ? 0 : 1;
+    }
+    if (data.leftPos) {
+      card.style.left = `${data.leftPos}%`        
+    }
+    if (data.zIndex || data.zIndex == 0) {
+      if (data.zIndex == 0) {
+        card.classList.add("highlight")
+      } else {
+        card.classList.remove("highlight")
+      }
+      card.style.zIndex = data.zIndex  
+    }
+  }
+  
+  calcScale2(x) {
+    let formula;
+    if (x <= 0) {
+      formula = 1 - -1 / 5 * x
+      return formula
+    } else if (x > 0) {
+      formula = 1 - 1 / 5 * x
+      return formula
+    }
+  }
+  
+  calcScale(x) {
+    const formula = 1 - 1 / 5 * Math.pow(x, 2)
+    return (formula <= 0) ? 0 : formula
+  }
+  
+  checkOrdering(card, x, xDist) {
+    const original = parseInt(card.dataset.x)
+    const rounded = Math.round(xDist)
+    let newX = x
+    if (x !== x + rounded) {
+      if (x + rounded > original) {
+        if (x + rounded > this.centerIndex) {
+          newX = ((x + rounded - 1) - this.centerIndex) - rounded + -this.centerIndex
+        }
+      } else if (x + rounded < original) {
+        if (x + rounded < -this.centerIndex) {
+          newX = ((x + rounded + 1) + this.centerIndex) - rounded + this.centerIndex
+        }
+      }
+      this.xScale[newX + rounded] = card;
+    }
+    const temp = -Math.abs(newX + rounded)
+    this.updateCards(card, {zIndex: temp})
+    return newX;
+  }
+  
+  moveCards(data) {
+    let xDist;
+    if (data != null) {
+      this.container.classList.remove("smooth-return")
+      xDist = data.x / 250;
+    } else {
+      this.container.classList.add("smooth-return")
+      xDist = 0;
+      for (let x in this.xScale) {
+        this.updateCards(this.xScale[x], {
+          x: x,
+          zIndex: Math.abs(Math.abs(x) - this.centerIndex)
+        })
+      }
+    }
+    for (let i = 0; i < this.cards.length; i++) {
+      const x = this.checkOrdering(this.cards[i], parseInt(this.cards[i].dataset.x), xDist),
+            scale = this.calcScale(x + xDist),
+            scale2 = this.calcScale2(x + xDist),
+            leftPos = this.calcPos(x + xDist, scale2)
+      this.updateCards(this.cards[i], {
+        scale: scale,
+        leftPos: leftPos
+      })
+    }
+  }
+}
+
+const carousel = new CardCarousel(cardsContainer)
+</script>
 </body>
 </html>
