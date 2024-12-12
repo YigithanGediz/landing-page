@@ -73,6 +73,7 @@
     overflow: hidden;
     padding: 20px;
     margin-top: 10em;
+    margin-bottom: 5em;
   }
 
   .visuallyhidden {
@@ -107,7 +108,7 @@
   }
 
   .card-carousel .card {
-    background: whitesmoke;
+    background: linear-gradient(to bottom, #cee5f2, #ffffff);
     width: var(--card-width);
     max-width: var(--card-max-width);
     text-align: center;
@@ -141,6 +142,13 @@
   .card:hover {
     text-decoration: underline;
   }
+
+  footer {
+    text-align: center;
+    color: #fff;
+    padding: 2em;
+    font-size: 0.8em;
+  }
 </style>
 </head>
 <body>
@@ -157,29 +165,25 @@
 
   <div class="container">
     <div class="card-carousel">
-      <a class="card" id="1" href="https://example.com/project1" target="_blank">
-        <h3 class="card-title">Project 1</h3>
-        <p>1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+      <a class="card" id="1" href="https://medium.com/@ygediz20/feature-selection-using-spectral-clustering-8d3f347c4e9c" target="_blank">
+        <h3 class="card-title">Application of Spectral Clustering to Feature Selection</h3>
+        <p>Why not model tabular data correlations as an adjacency matrix? This transforms them into undirected networks, enabling to find optimal partitions through spectral clustering. I discovered the core, orthogonal skill groups of NBA players using this method.</p>
       </a>
-      <a class="card" id="2" href="https://example.com/project2" target="_blank">
-        <h3 class="card-title">Project 2</h3>
-        <p>2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+      <a class="card" id="2" href="https://medium.com/@ygediz20/statistical-physics-of-diffusion-models-80c887b17a7c" target="_blank">
+        <h3 class="card-title">Interplay Between Statistical Physics and Diffusion Generative Models</h3>
+        <p>For my graduate-level statistical mechanics final project, I explored the Fokker-Planck equation dynamics in diffusion generative models and examined how phase transitions relate to generating samples across different classes.</p>
       </a>
       <a class="card" id="3" href="https://example.com/project3" target="_blank">
         <h3 class="card-title">Project 3</h3>
         <p>3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
       </a>  
-      <a class="card" id="4" href="https://example.com/project4" target="_blank">
-        <h3 class="card-title">Project 4</h3>
-        <p>4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
-      </a>
-      <a class="card" id="5" href="https://example.com/project5" target="_blank">
-        <h3 class="card-title">Project 5</h3>
-        <p>5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
-      </a>
     </div>
     <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
   </div>
+
+  <footer>
+    &copy; 2024 Yiğithan Gediz. All rights reserved.
+  </footer>
 
 <script>
 const heroText = document.getElementById('hero-text');
