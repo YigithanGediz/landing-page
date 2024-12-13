@@ -26,6 +26,10 @@
     pointer-events: none;
   }
 
+  .top-empty-space {
+    height: 2em;
+  }
+
   .top-section {
     display: flex;
     justify-content: center;
@@ -39,6 +43,11 @@
     height: auto;
     border: 2px solid white;
     border-radius: 0.5em;
+    transition: transform 0.3s ease;
+  }
+
+  .top-section img:hover {
+    transform: scale(1.5);
   }
 
   .hero {
@@ -152,6 +161,7 @@
 </style>
 </head>
 <body>
+  <div class="top-empty-space"></div>
   <div class="top-section">
     <img src="gif1.gif" alt="Simulation GIF 1">
     <img src="gif2.gif" alt="Simulation GIF 2">
@@ -272,6 +282,7 @@ class DraggingEvent {
         }
       }
     }
+    
     this.event(distanceInit)
   }
 }
