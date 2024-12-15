@@ -152,6 +152,32 @@
     text-decoration: underline;
   }
 
+  .carousel-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    margin-top: 2em;
+  }
+
+  .carousel-button {
+    background: #333;
+    color: #fff;
+    font-size: 2em;
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .carousel-button:hover {
+    background: #555;
+  }
+
+  .carousel-button:active {
+    background: #222;
+  }
+
   footer {
     text-align: center;
     color: #fff;
@@ -183,12 +209,16 @@
         <h3 class="card-title">Interplay Between Statistical Physics and Diffusion Generative Models</h3>
         <p>For my graduate-level statistical mechanics final project, I explored the Fokker-Planck equation dynamics in diffusion generative models and examined how phase transitions relate to generating samples across different classes.</p>
       </a>
-      <a class="card" id="3" href="https://example.com/project3" target="_blank">
-        <h3 class="card-title">Project 3</h3>
-        <p>3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+      <a class="card" id="3" href="research" target="_blank">
+        <h3 class="card-title">Research Projects</h3>
+        <p>Check out my blog posts on the cool facts that I discovered in my research journey!</p>
       </a>  
     </div>
     <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
+    <div class="carousel-buttons">
+      <button class="carousel-button left">◀</button>
+      <button class="carousel-button right">▶</button>
+    </div>
   </div>
 
   <footer>
@@ -456,6 +486,17 @@ class CardCarousel extends DraggingEvent {
 }
 
 const carousel = new CardCarousel(cardsContainer)
+
+const leftButton = document.querySelector('.carousel-button.left');
+const rightButton = document.querySelector('.carousel-button.right');
+
+leftButton.addEventListener('click', () => {
+  carousel.controller({keyCode: 37});
+});
+
+rightButton.addEventListener('click', () => {
+  carousel.controller({keyCode: 39});
+});
 </script>
 </body>
 </html>
